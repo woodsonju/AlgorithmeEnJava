@@ -1,0 +1,35 @@
+Procédure initialiser_pile()
+Début
+    nbelements <- 0
+Fin
+
+
+
+Procédure empiler(c)
+Déclaration 
+    Paramètre c             en Caractère
+Début
+     pile[nbelements] <- c
+     nbelements < nbelement + 1
+Fin
+
+
+
+Fonction depiler()
+Déclaration 
+    Variable c             en Caractère
+Début
+     nbelements < nbelement - 1
+     c <- pile[nbelements] 
+     retourner c
+Fin
+
+
+Fonction pile_vide()
+Début
+    Si(nbelements = 0)
+        retourner VRAI
+    Sinon
+        retourner FAUX
+    FinSi
+Fin

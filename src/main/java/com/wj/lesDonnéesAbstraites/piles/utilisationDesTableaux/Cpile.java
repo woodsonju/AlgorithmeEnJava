@@ -1,4 +1,4 @@
-package com.wj.lesDonnéesAbstraites.piles;
+package com.wj.lesDonnéesAbstraites.piles.utilisationDesTableaux;
 
 public class Cpile {
      private static final int TAILLE=100;
