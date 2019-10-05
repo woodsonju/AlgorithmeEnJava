@@ -1,0 +1,23 @@
+Fonction palindrome(phr, debut, fin)
+Déclarations
+    Paramètre phr                       en Entier
+    Paramètre debut, fin                en Entier
+Début
+    //On passe les espaces
+    Tant que (phr[debut]=' ') Faire
+        debut <- debut + 1
+    FinTantQue
+    Tant que (phr[fin]=' ') Faire
+            fin <- fin - 1
+    FinTantQue
+    Si (debut >= fin) Alors
+        Retourner VRAI
+    Sinon
+        Si (phr[debut] <> phr[fin]) Alors
+            Retourner FAUX
+        Sinon
+            Retourner palindrome(phr, debut+1, fin-1)
+        FinSi
+    FinSi
+Fin
+    

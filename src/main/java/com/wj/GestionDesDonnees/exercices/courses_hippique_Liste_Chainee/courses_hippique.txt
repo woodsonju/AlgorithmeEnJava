@@ -1,0 +1,56 @@
+Type cheval_de_course   en Enregistrement 
+    champ pt_succ       en Pointeur de cheval_de_course
+    champ nom           en Chaine
+    champ dossard       en Entier
+    champ temps         en Réel
+    champ classement    en Entier
+    champt pr_pred      en Pointeur de cheval_de_course
+Fin d'enregistrement
+
+//CONTRUIRE UNE LISTE
+list_chevaux <- AUCUNE_ADRESSE          //pt_debut
+pt_fin <- AUCUNE_ADRESSE
+dossard <- 1
+Tant que (dossard <> 0) Faire
+    Ecrire("Dossard du cheval : ")
+    Lire(dossard);
+    Si (dossard <> 0) Alors         //Création du nouvel élément    
+        //Création d'un nouvel élément
+        pt_nouveau <- allouer(Cheval_de_course)
+        //Initialisation des champs pointeurs
+        (*pt_nouveau).pt_pred <- AUCUNE_ADRESSE
+        (*pt_nouveau).pt_succ <- AUCUNE_ADRESSE
+        //Saisie des autres champs
+        (*pt_nouveau).dossard <- dossard
+        Ecrire("Nom du cheval : ")
+        Lire((*pt_nouveau).nom)
+        (*pt_nouveau).temps <- 0.0
+        (*pt_nouveau).classement <- 0.0
+        //Ajout du nouvel élément en fin de liste
+        Si (list_chevaux <- AUCUNE_ADRESSE) Alors
+            //La liste est vide
+            list_chevaux <- pt_nouveau
+            pt_fin <- pt_nouveau
+        Sinon 
+            (*pt_nouveau).pt_pred <- pt_fin
+            (*pt_fin).pt_succ <- pt_nouveau
+            pt_fin <- pt_nouveau
+        FinSi
+    FinSi
+FinTantQue
+
+        
+
+//AFFICHER UNE LISTE
+pt_courant <- list_chevaux
+Tant Que (pt_courant <> AUCUNE_ADRESSE) Faire
+    Ecrire((*pt_courant).nom, (*pt_courant).dossard);
+    Ecrire((*pt_courant).temps, (*pt_courant).classement);
+    pt_courant <- (*pt_courant).pt_succ
+FinTantQue
+
+
+    
+    
+    
+    

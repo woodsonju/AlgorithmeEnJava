@@ -1,0 +1,16 @@
+Fonction factorielle(n)
+Déclarations
+    Paramètre n                             en Entier
+    Variable Résultat                       en Réel
+Début
+    Si (n<0) Alors
+        Résultat <- 0
+    Sinon
+        Si (n = 0 OU nb = 1)
+            Résultat <- 1
+        Sinon
+            Résultat <- n*factorielle(n-1)
+        FinSi
+    FinSi
+    Retourner Résultat
+Fin

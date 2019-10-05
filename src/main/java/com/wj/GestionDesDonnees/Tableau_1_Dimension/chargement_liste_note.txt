@@ -1,0 +1,82 @@
+Programme chargement_liste_notes
+Déclarations
+    Variable nb en Réel
+    Variable liste_notes en Tableau[50] Réels
+    Variable i, nbnotes en Entier
+Début
+    nb <- 0
+    nbnotes <- 0
+    Ecrire("Entrez une liste de notes (-1 pour terminer) : ")
+    //--- Boucle de chargement ---
+    Tant Que ((nb <> -1) ET (nbnotes < 50)) Faire 
+        Lire(nb)
+        liste_notes[nbnotes] <- nb
+        nbnotes <- nbnotes + 1
+    FinTantQue
+    Si(nb = -1) Alors
+        nbnotes <- nbnotes - 1
+    Sinon
+        Ecrire("nombre de note limité à 50")
+    FinSi
+    // --- Boucle d'affichage ---
+    Pour i variant de 0 à nbnotes - 1
+        Ecrire(listes_notes[i]
+    FinPour
+    
+    // --- moyenne des notes ---
+    somme <- 0
+    pour i variant de 0 à nbnotes-1 Faire
+        somme <- somme + list_notes[i]
+    FinPour
+    moyenne <- somme / nbnotes
+    
+    // Recherche donnée dans le tableau 
+    Ecrire("Note à chercher :")
+    Lire(note_recherchée)
+    trouvé <- FAUX
+    i <- 0
+    Tant Que ((NON trouvé) ET (i < nbnotes)) Faire
+        Si(note_recherchée == listes_notes[i]) Alors
+            trouvé <- VRAI
+            numcase <- i
+        Sinon
+            i <- i + 1;
+        FinSi
+    FinTantQue      
+    Si(Non trouvé)
+        Ecrire(Note non trouvé dans la liste")
+    FinSi   
+    
+    // Insérer un élement dans le tableau
+    Ecrire("note à insérer : ")
+    Lire(note_a_inserer)
+    Ecrire("Position : ")
+    Lire(Position)
+    numecase <- position - 1
+    //Boucle de décalage
+    Pour i variant de nbnotes à numcase + 1 par pas de -1 Faire
+        liste_notes[i] <- liste_notes[i-1]
+    FinPour
+    //Insertion dans la case numcase
+    list_note[numcase] = note_a_inserer
+    nbnotes <- nbnotes + 1
+    
+    //Suppression d'un élément 
+    Ecrire("Position de la note à supprimer : ")
+    Lire(position)
+    numcase <- position - 1
+    Pour i variant de numcase à nbnotes - 1 Faire
+        liste_notes[i] <- liste_notes[i+1]
+    FinPour
+    nbnotes <- nbnotes - 1
+    
+    //Inversion de deux éléments
+    Ecrire("Position des deux notes à inverser : ")
+    Lire(position1)
+    Lire(position2)
+    nb <- list_notes[position1]
+    list_notes[position1] <- list_notes[position2]
+    list_notes[position2] <- nb
+Fin
+
+    

@@ -1,0 +1,23 @@
+Programme hanoi
+Déclaration
+    Variables nbd                       en Entier
+Début
+    Ecrire ("Entrez le nombre de disque : ")
+    Lire(nbd)
+    //Appel initial de la procédure récursive
+    deblacer(nbd, 1, 3, 2)
+Fin
+
+// --- Procédure recursive déplacer ---
+Procédure deplacer(nb_disques, départ, arrivée, intermédiaire)
+Déclarations
+    Paramètres nb_disques, départ, arrivée, intermédiaire       en Entier
+Début
+    Si (nb_disques = 1) Alors               // Déplacement d'une seule de disques
+        Ecrire(départ, " -> ", arrivée)
+    Sinon                                   // Déplacement d'une pile de disque
+        déplacer(nb_disques-1, départ, intermédiaire, arrivée)
+        déplacer(1, départ, arrivée, intermédiaire)
+        déplacer(nb_disques-1, intermédiaire, arrivée, départ)
+    FinSi
+Fin

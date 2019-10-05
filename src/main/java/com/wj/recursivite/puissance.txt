@@ -1,0 +1,12 @@
+Fonction puissance(x, N)
+Déclarations
+    Paramètre x                 en Réel
+    Paramètre N                 en Entier
+    Variable Résultat           en Réel
+Début
+    Si (N = 0) Alors            //Récursion Terminale
+        Résultat <- 1
+    Sinon                       //Appel récursif
+        Résultat <- x*puissance(x, N-1)
+    FinSi
+Fin

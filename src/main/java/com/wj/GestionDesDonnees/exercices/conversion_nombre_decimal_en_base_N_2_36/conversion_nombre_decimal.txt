@@ -1,0 +1,14 @@
+quotient <- 1
+Tant que (quotient <> 0) Faire
+    // --- Calcul de cette itération ---
+    quotient <- nb DIV base
+    reste <- nb MOD base
+    // --- Evolution prochaine itération ---
+    nb <- quotient
+    // Mise en forme et affichage du résultat
+    Si (reste>=0) ET (reste<=9) Alors
+        lettre <- code_caractere(reste+48)
+    Sinon
+    lettre <- code_caractere(reste + 55)
+    affichage <- concaténation(lettre, aaffichage)
+FinTantQue

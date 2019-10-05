@@ -1,0 +1,49 @@
+//PREMIERE VERSION
+Programme nombre_docurrence_dans_un_tableau
+Déclarations
+    Variable tab[100]                                  en Entier
+    Variable i, nbelements, nb                         en Entier
+Début
+    pour i variant de 0 à nbelements-1 Faire
+    //On vérifie que cet élément n'a pas déjà été traité
+    trouve <- FAUX
+    pour j variant de 0 à i-1 Faire
+        Si (tab[i] = tab[j] Alors
+            trouvé <- VRAI
+        FinSi
+    FinPour
+    Si(trouvé = FAUX) Alors
+        //On comptabilise ses occurences
+        occurences <- 1
+        Pour j variant de i+1 à nbelements-1 Faire
+            Si (tab[i] = tab[j]) Alors    
+                occurences <- occurences + 1
+            FinSi
+        FinPour
+        Ecrire(tab[i]," : ",occurence," occurences(s)")
+    FinSi
+FinPour
+
+
+//DEUXIEME VERSION : Utilisation de deux tableau
+Programme nombre_doccurrence_dans_un_tableaux
+Déclarations
+     Variable tab[100], tab_occurences[100]                                 en Entier
+     Variable i, nbelements, nb                                                     en Entier
+Début
+    pour i variant de 0 à 100 Faire   // --- Boucle d'initialisation
+        tab_occurrences[i] <- 0;
+    FinPour
+    //-- Boucle de détectetion des occurences ---
+    Pour i variant de 0 à nbelements-1 Faire
+        v <- tab[i]
+        tab_occurrences[v] <- tab_occurrences[v] + 1
+    FinPour
+    Pour i variant de 0 à 100 Faire       /--- Affichage des occurences ---
+        if(tab_occurrences[v] <> 0) Alors 
+            Ecrire(i, " : ", tab_occurrences[i], " occurrence(s)")
+        FinSi
+    FinPour
+
+    
+    

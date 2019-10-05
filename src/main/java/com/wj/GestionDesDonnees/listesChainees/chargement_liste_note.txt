@@ -1,0 +1,154 @@
+/**
+    CONSTRUIRE UNE LISTE
+*
+
+nb <- 0
+
+Ecrire("Entrez une liste de notes(-1 pour terminer : ")
+
+
+TantQue(nb <> -1) Faire
+
+    //Création d'un nouvel élément
+    pt_nouveau <- allouer(Enr_Note)
+    
+    //Initialisation des champs note, pt_pred, pt_succ
+    (*pt_nouveau).note <- nb
+    (*pt_nouveau).pt_pred <- AUCUNE_ADRESSE
+    (*pt_nouveau).pt_succ <- AUCUNE_ADRESSE
+    //Ajout du nouvel élément en fin de liste
+    Si(pt_debut = AUCUNE_ADRESSE) Alors
+        //La liste est vide
+        pt_debut <- pt_nouveau
+        pt_fin <- pt_nouveau
+        
+    Sinon
+    
+        //Etape 1: On affecte pt_succ du dernier élément (D)
+        //Le dernier élément est l'élélement actuellement pointé 
+        //par pt_fin (*pt_fin)
+        //Donc on change la valeur du champ pt_succ 
+        //de l'élément pointé par pt_fin : (*pt_fin).pt_succ
+        //en lui affectant l'adresse du nouvelle élément
+        //qui est connu dans pt_nouveau
+        (*pt_fin).pt_succ <- pt_nouveau
+        
+        //Etape 2: On affecte pt_pred du nouvel élément (N)
+        //Le nouvel élément est pointé par pt_nouveau (*pt_nouveau)
+        //Donc on change la valeur du champs pt_pred de l'élément
+        //pointé par pt_nouveau: (*pt_nouveau).pt_pred
+        //en lui affectant l'adresse du dernier élément actuel
+        //qui est contenu dans pt_fin
+        (*pt_nouveau).pt_pred <- pt_fin
+        
+        //Etape 3: On met à jour pt_fin
+        //pt_fin doit pointer ver le nouvel élément (N)
+        //Car il est desormais en fin de liste
+        pt_fin <- pt_nouveau
+    Fin_si
+Fin_TantQue
+
+
+
+/**
+   PARCOURIR UNE LISTE 
+*/
+pt_courant <- pt_début
+Tant que(pt_courant <> AUCUNE_ADRESSE) Faire
+    Ecrire(*pt_courant).note)
+    //Le futur pt_courant est le successeur du pt_courant actuel
+    pt_courant <- (*pt_courant).pt_succ
+FinTantQue
+
+
+/**
+    CHERCHER UN ELEMENT
+*/
+pt_courant <- pt_debut
+Ecrire("Numéro de l'élément à rechercher : ")
+Lire(i)
+j<-1
+Tant que ((j<i) ET (pt_courant <> AUCUNE_ADRESSE)) FAIRE
+    pt_courant <- (*pt_courant).pt_succ
+    j<- j+1
+FinTantQue
+Ecrire("note=", (*pt_courant).note)
+
+
+
+/**
+    INSERTION D'UN NOUVEL ELEMENT
+*/
+
+// -- Création d'un nouvel élément --
+pt_nouveau <- allouer(Enr_Note)
+
+//Initialisation des champs note, pt_pred, pt_succ
+(*pt_nouveau).note <- nb
+(*pt_nouveau).pt_pred <- AUCUNE_ADRESSE
+(*pt_nouveau).pt_succ <- AUCUNE_ADRESSE
+
+//---Chainage avec la note PRECEDENTE--
+Si(pt_courant = pt_debut) Alors  //--Insertion en début de liste
+    (*pt_nouveau).pt_succ <- pt_debut
+    (*pt_debut).pt_pred <- pt_nouveau
+    pt_debut <- pt_nouveau
+Sinon
+    //Chainage entre deux notes
+    
+    //Le pointeur pt_note_precedente reçoit l'adresse de 
+    //l'élément précedente du pointeur courant (*pt_courant).pred
+    pt_note_precedente <- (*pt_courante).pt_pred    //Etape 1
+    
+    //Le successeur de la nouvelle note précédente P
+    //(*pt_note_precedente).pt_succ réçoit l'adresse
+    //nouvelle élément N, pt_nouveau
+    (*pt_note_precedente).pt_succ <- pt_nouveau    //Etape 2 
+    
+    //Le prédécesseur de la nouvelle note N
+    //(*pt_nouveau).pt_pred reçoit l'adresse
+    //de la note précédente P pt_note_precedente
+    (*pt_nouveau).pt_pred <- pt_note_precedente         //Etape 3
+ FinSi
+    
+//---Chainage avec la note SUIVANTE--
+//L'adresse de la note suivante S (pt_note_suivante) recoit
+//reçoit l'adresse de la note courante pt_courante
+pt_note_suivante <- pt_courante         //Etape 4
+
+//L'adresse du prédécesseur de la note suivante S
+//(*pt_note_suivante).pt_pred
+//reçois l'adresse de la nouvelle élement N
+(*pt_note_suivante).pt_pred <- pt_nouveau       //Etape 5
+
+//L'adresse du successeur de la nouvelle note N (*pt_nouveau).pt_succ
+//récois l'adresse de la note suivante, pt_note_suivante
+(*pt_nouveau).pt_succ <- pt_note_suivante       //Etape 6
+
+
+
+/**
+    SUPPRESSION D'UN ELEMENT
+*/
+Si(pt_courant == pt_debut) Alors    //Suppression du premier élement
+    *pt_note_suivante <- (*pt_debut).pt_succ
+    (*pt_note_suivante).pt_pred <- AUCUNE_ADRESSE
+    pt_debut <- pt_note_suivante
+Sinon
+    Si(pt_courant == pt_fin)        //Suppression du dernier élement
+       * pt_note_précédente <- (*pt_fin).pt_pred
+       *pt_note_précédente.pt_succ <- AUCUNE_ADRESSE
+       pt_fin <- pt_note_précédente
+    Sinon
+        *pt_note_précédente <- (*pt_courant).pt_pred            //Etape 1
+        *pt_note_suivante <- (*pt_courant).pt_succ              //Etape 2
+        (*pt_note_précédente).pt_succ <- pt_note_suivante       //Etape 3
+        (*pt_note_suivante).pt_pred <- pt_note_précédente       //Etape 4
+    FinSi       
+SinonSi
+
+//Destruction de la note extraite de la liste
+libérer(pt_courante)        //Etape 5
+     
+    
+

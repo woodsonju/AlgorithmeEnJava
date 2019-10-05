@@ -1,0 +1,22 @@
+Fonction u(nb)
+Déclaration
+    Paramètre nb en Entier
+Début
+    Si (nb=0) Alors
+        retourner 1
+    Sinon
+        retourner((3*u(nb-1)+2*v(nb-1))
+    FinSi
+Fin
+
+
+Fonction v(nb)
+Déclaration
+    Paramètre nb en Entier
+Début
+    Si (nb=0) Alors
+        retourner 2
+    Sinon
+        retourner((2*u(nb-1)+3*v(nb-1))
+    FinSi
+Fin

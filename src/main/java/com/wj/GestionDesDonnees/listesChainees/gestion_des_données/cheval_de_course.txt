@@ -1,0 +1,38 @@
+Programme cheval_de_course
+Déclaration 
+    Type cheval_de_course en Enregistrement
+                        Champ nom           en Chaine
+                        Champ dossard       en Entier
+                        Champ temps         en Réel
+                        Champ classement    en Entier
+                     Fin d'Enregistrement
+    Variable tab_chevaux en tableau[30] de chaval_de_course
+
+//Saisir une liste de chevaux au départ d'une course 
+//Afficher la liste des participants
+nbchevaux           <- 0
+cheval.dossard      <- 1
+cheval.temps        <- 0
+cheval.classement   <- 0
+Tant que (cheval.dossard <> 0) Faire
+    // Saisie des informations
+    Ecrire("Dossard du cheval : ")
+    Lire(cheval.dossard)
+    Si (cheval.dossard <> 0) Alors
+        //On demande la suite, puis on range dans le tableau
+        Ecrire("Nom du cheval : ")
+        Lire(cheval.nom)
+        //Rangement dans le tableau
+        redimensionner(tab_cheveaux, nbchevaux+1)
+        tab_chevaux(nbchevaux) <- cheval
+        nbchevaux <- nbchevaux + 1
+    FinSi
+FinTantQue
+//Affichage de tous les chevaux
+Pour i variant de 0 nbchevaux-1 Faire
+    cheval <- nbchevaux[i]
+    Ecrire(cheval.nom, cheval.dossard, cheval.temps, cheval.classement)
+FinPour
+    
+    
+
