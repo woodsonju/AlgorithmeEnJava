@@ -1,0 +1,90 @@
+Type élément en Enregistrement
+    Champ pt_succ               en pointeur d'élément
+    champ c                     en Caractère
+    champ pt_pred               en Pointeur d'élément
+Fin d'Enregistrement
+
+
+
+Procédure initialiser_pile()
+Début
+    pile <- AUCUNE_ADRESSE                  //pt_début
+    pt_fin <- AUCUNE_ADRESSE
+Fin
+
+
+
+Procedure empiler(elt)
+Déclarations
+    Paramètre elt                        en Caractère
+    Variable pt_nouveau                  en Pointeur d'élément  
+Début
+    //Création du nouvel élément
+    pt_nouveau <- Allouer(élément)
+    
+    //Initialisation des champs elt, pt_pred, pt_succ
+     *pt_nouveau.c <- elt 
+    (*pt_nouveau).pt_succ <- AUCUNE_ADRESSE
+    (*pt_nouveau).pt_pred <- AUCUNE_ADRESSE
+    
+    //Ajout du nouvel élément en fin de liste
+    Si(pile <- AUCUNE_ADRESSE) Alors   //Liste vide
+        pile <- pt_nouveau
+        pt_fin <- pt_nouveau
+    Sinon
+        // étape 1: On affecte le champ pt_succ du dernier élément ajouté
+        (*pt_fin).pt_succ <- pt_nouveau
+        // étapre : On affecte le champt pt_pred du nouvel élément
+        (*pt_nouveau).pt_pred <- pt_fin
+        
+        pt_fin <- pt_nouveau
+    FinSi
+Fin
+
+
+
+Fonction dépiler()
+Déclaration
+    Variable candidat                      en élément
+    Variable pt_element_precedent          en Pointeur d'élément
+Début
+    //Extraction du dernier élément de la pile
+    candidat <- (*pt_fin)       //On enlève à partir de la fin
+    candidat.pt_pred <- AUCUNE_ADRESSE
+    candidat.pt_succ <- AUCUNE_ADRESSE
+    
+    //Rétrait de la pile
+    pt_element_precedent <- (*pt_fin).pt_pred
+    Si(pt_element_precedent = AUCUNE_ADRESSE) Alors
+        pile <- AUCUNE_ADRESSE
+    Sinon
+        pt_fin <- AUCUN_ADRESSE
+    FinSi
+    
+    //Libération de l'élément
+    Liberer(pt_fin)
+    pt_fin <- pt_element_precedent
+    retourner canditat.c
+Fin
+
+
+Fonction pile_vide() 
+Début
+    Si(pile = AUCUNE_ADRESSE) Alors
+        retourner VRAI
+    Sinon 
+        retourner
+    FinSi
+FinSi
+    
+    
+    
+
+
+
+        
+    
+    
+
+
+    
