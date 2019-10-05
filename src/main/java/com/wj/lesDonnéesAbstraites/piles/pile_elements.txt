@@ -79,7 +79,16 @@ FinSi
     
     
     
-
+carac <- ' '
+initialiser_pile()
+Ecrire("Entrez une chaine de caractères : ")
+Tant que (caract <> fin_de_ligne()) Faire
+    Lire(caract)
+    empiler(carac)
+FinTantQue
+Tant que (Non pile_vide()) Faire
+    Ecrire(dépiler())
+FinTantQue
 
 
         
